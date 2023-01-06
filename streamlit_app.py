@@ -27,7 +27,7 @@ def run_query(query):
         cur.execute(query)
         return cur.fetch_pandas_all()
 
-df = run_query('select * from "CD_ANALYTICS_TESTDB"."ANALYTICSTESTDB_SCHEMA"."SPRING_CLTV_PREDICTIONS"')
+df = run_query('select OPPID,CDUID,MODEL_PREDICTED_PROBABILITY  from "CD_ANALYTICS_TESTDB"."ANALYTICSTESTDB_SCHEMA"."SPRING_CLTV_PREDICTIONS" limit 1000')
 
 
 # ctx = snowflake.connector.connect(
