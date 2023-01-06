@@ -7,6 +7,7 @@ import numpy as np
 from st_aggrid import AgGrid
 from collections import namedtuple
 import altair as alt
+from PIL import Image
 
 # Initialize connection.
 # Uses st.experimental_singleton to only run once.
