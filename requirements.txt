@@ -3,3 +3,4 @@ pandas
 streamlit
 snowflake-connector-python
 streamlit-aggrid
+Pillow
