@@ -2,3 +2,4 @@ altair
 pandas
 streamlit
 snowflake-connector-python
+st_aggrid
