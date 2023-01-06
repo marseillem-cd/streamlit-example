@@ -29,7 +29,7 @@ def run_query(query):
 
 rows = run_query('select OPPID,CDUID,MODEL_PREDICTED_PROBABILITY  from "CD_ANALYTICS_TESTDB"."ANALYTICSTESTDB_SCHEMA"."SPRING_CLTV_PREDICTIONS" limit 1000')
 
-df = pd.Dataframe(rows, columns=['OPPID','CDUID','MODEL_PREDICTED_PROBABILITY'])
+df = pd.DataFrame(rows, columns=['OPPID','CDUID','MODEL_PREDICTED_PROBABILITY'])
 
 
 # ctx = snowflake.connector.connect(
