@@ -8,17 +8,40 @@ from st_aggrid import AgGrid
 
 #streamlit run C:\Users\marseille.ma\Streamlit\streamlit_SF.py
 
-ctx = snowflake.connector.connect(
-    user="SVC_SPRING_DATASCIENCE",
-    password="silla!_lepidoptera682",
-    account="KYA28640",
-    warehouse="ANALYSTS_WH",
-    database="CD_ANALYTICS_TESTDB",
-    schema="ANALYTICSTESTDB_SCHEMA"
-)
-cur = ctx.cursor()
-cur.execute('select OPPID,CDUID,MODEL_PREDICTED_PROBABILITY  from "CD_ANALYTICS_TESTDB"."ANALYTICSTESTDB_SCHEMA"."SPRING_CLTV_PREDICTIONS" limit 1000')
-df = cur.fetch_pandas_all()
+import snowflake.connector
+
+# Initialize connection.
+# Uses st.experimental_singleton to only run once.
+@st.experimental_singleton
+def init_connection():
+    return snowflake.connector.connect(
+        **st.secrets["snowflake"], client_session_keep_alive=True
+    )
+
+conn = init_connection()
+
+# Perform query.
+# Uses st.experimental_memo to only rerun when the query changes or after 10 min.
+@st.experimental_memo(ttl=600)
+def run_query(query):
+    with conn.cursor() as cur:
+        cur.execute(query)
+        return cur.fetchall()
+
+df = run_query('select * from "CD_ANALYTICS_TESTDB"."ANALYTICSTESTDB_SCHEMA"."SPRING_CLTV_PREDICTIONS"')
+
+
+# ctx = snowflake.connector.connect(
+#     user="SVC_SPRING_DATASCIENCE",
+#     password="silla!_lepidoptera682",
+#     account="KYA28640",
+#     warehouse="ANALYSTS_WH",
+#     database="CD_ANALYTICS_TESTDB",
+#     schema="ANALYTICSTESTDB_SCHEMA"
+# )
+# cur = ctx.cursor()
+# cur.execute('select OPPID,CDUID,MODEL_PREDICTED_PROBABILITY  from "CD_ANALYTICS_TESTDB"."ANALYTICSTESTDB_SCHEMA"."SPRING_CLTV_PREDICTIONS" limit 1000')
+# df = cur.fetch_pandas_all()
 
 image=Image.open("SpringFinancial.jpg")
 st.image(image,width=300)
