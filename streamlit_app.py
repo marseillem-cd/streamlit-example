@@ -20,7 +20,7 @@ cur = ctx.cursor()
 cur.execute('select OPPID,CDUID,MODEL_PREDICTED_PROBABILITY  from "CD_ANALYTICS_TESTDB"."ANALYTICSTESTDB_SCHEMA"."SPRING_CLTV_PREDICTIONS" limit 1000')
 df = cur.fetch_pandas_all()
 
-image=Image.open("C:/Users/marseille.ma/Streamlit/SpringFinancial.jpg")
+image=Image.open("SpringFinancial.jpg")
 st.image(image,width=300)
 
 
