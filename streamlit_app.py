@@ -5,10 +5,8 @@ from snowflake import connector
 import snowflake
 import numpy as np
 from st_aggrid import AgGrid
-
-#streamlit run C:\Users\marseille.ma\Streamlit\streamlit_SF.py
-
-import snowflake.connector
+from collections import namedtuple
+import altair as alt
 
 # Initialize connection.
 # Uses st.experimental_singleton to only run once.
