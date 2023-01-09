@@ -27,7 +27,7 @@ def run_query(query):
         cur.execute(query)
         return cur.fetchall()
 
-rows = run_query('select OPPID,CDUID,iff(MODEL_PREDICTED=1, 'YES','NO') as Can_Pay_$160,MODEL_PREDICTED_PROBABILITY  from "CD_ANALYTICS_TESTDB"."ANALYTICSTESTDB_SCHEMA"."SPRING_CLTV_PREDICTIONS"')
+rows = run_query('select OPPID,CDUID,iff(MODEL_PREDICTED=1, "YES","NO") as Can_Pay_$160,MODEL_PREDICTED_PROBABILITY  from "CD_ANALYTICS_TESTDB"."ANALYTICSTESTDB_SCHEMA"."SPRING_CLTV_PREDICTIONS"')
 
 df = pd.DataFrame(rows, columns=['OPPID','CDUID','MODEL_PREDICTED_PROBABILITY'])
 
