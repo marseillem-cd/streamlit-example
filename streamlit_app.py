@@ -85,7 +85,7 @@ def check_password():
     
 def filter_dataframe(df):# pd.DataFrame) -> pd.DataFrame:
     user_text_input = st.text_input(
-        f"Please enter CDUID here:",
+        f"Please Enter CDUID Here:",
         )
     if user_text_input:
         df = df[df['CDUID'].astype(str).str.contains(user_text_input)]
