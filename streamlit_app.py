@@ -84,27 +84,22 @@ def check_password():
 
     
     
-from pandas.api.types import (
-    is_categorical_dtype,
-    is_datetime64_any_dtype,
-    is_numeric_dtype,
-    is_object_dtype,
-)
 
 
 
-def filter_dataframe(df):
-    user_text_input = st.text_input(
-        f"Please enter CDUID here:",
-        )
-    if user_text_input:
-        df = df[df['CDUID'].astype(str).str.contains(user_text_input)]
+# def filter_dataframe(df):
+#     user_text_input = st.text_input(
+#         f"Please enter CDUID here:",
+#         )
+#     if user_text_input:
+#         df = df[df['CDUID'].astype(str).str.contains(user_text_input)]
 
-    return df    
+#     return df    
     
     
     
 if check_password():
     st.header('_CLTV Scores_ :zap:')
     st.caption('Please click the checkbox below to filter for the OPPID and CDUID you want!', unsafe_allow_html=False)
-    st.dataframe(filter_dataframe(df))
+    AgGrid(df)
+    #st.dataframe(filter_dataframe(df))
