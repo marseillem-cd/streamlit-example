@@ -87,19 +87,19 @@ def check_password():
 
 
 
-# def filter_dataframe(df):
-#     user_text_input = st.text_input(
-#         f"Please enter CDUID here:",
-#         )
-#     if user_text_input:
-#         df = df[df['CDUID'].astype(str).str.contains(user_text_input)]
+ def filter_dataframe(df):
+     user_text_input = st.text_input(
+         f"Please enter CDUID here:",
+         )
+     if user_text_input:
+         df = df[df['CDUID'].astype(str).str.contains(user_text_input)]
 
-#     return df    
+     return df    
     
     
     
 if check_password():
     st.header('_CLTV Scores_ :zap:')
     st.caption('Please click the checkbox below to filter for the OPPID and CDUID you want!', unsafe_allow_html=False)
-    AgGrid(df)
     #st.dataframe(filter_dataframe(df))
+    filter_dataframe(df)
