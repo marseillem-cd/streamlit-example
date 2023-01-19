@@ -93,7 +93,7 @@ from pandas.api.types import (
 
 
 
-def filter_dataframe(df: pd.DataFrame) -> pd.DataFrame:
+def filter_dataframe(df):
     user_text_input = st.text_input(
         f"Please enter CDUID here:",
         )
