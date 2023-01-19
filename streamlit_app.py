@@ -97,5 +97,4 @@ def filter_dataframe(df):# pd.DataFrame) -> pd.DataFrame:
 if check_password():
     st.header('_CLTV Scores_ :zap:')
     st.caption('Please click the checkbox below to filter for the OPPID and CDUID you want!', unsafe_allow_html=False)
-    #st.dataframe(filter_dataframe(df))
-    filter_dataframe(df)
+    st.dataframe(filter_dataframe(df))
