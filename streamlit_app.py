@@ -37,19 +37,6 @@ rows = run_query('select * from "CD_ANALYTICS_TESTDB"."ANALYTICSTESTDB_SCHEMA"."
 
 df = pd.DataFrame(rows, columns=['OPPID','CDUID','Can_Pay_$160','PREDICTED_PROBABILITY'])
 
-
-# ctx = snowflake.connector.connect(
-#     user="SVC_SPRING_DATASCIENCE",
-#     password="silla!_lepidoptera682",
-#     account="KYA28640",
-#     warehouse="ANALYSTS_WH",
-#     database="CD_ANALYTICS_TESTDB",
-#     schema="ANALYTICSTESTDB_SCHEMA"
-# )
-# cur = ctx.cursor()
-# cur.execute('select OPPID,CDUID,MODEL_PREDICTED_PROBABILITY  from "CD_ANALYTICS_TESTDB"."ANALYTICSTESTDB_SCHEMA"."SPRING_CLTV_PREDICTIONS" limit 1000')
-# df = cur.fetch_pandas_all()
-
 image=Image.open("SpringFinancial.jpg")
 st.image(image,width=300)
 
